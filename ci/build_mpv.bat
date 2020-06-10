@@ -8,7 +8,7 @@ if not exist %MPVDIR% mkdir %MPVDIR%
 cd %MPVDIR%
 
 if exist %MPVDIR%\mpv-1.dll goto :def
-appveyor DownloadFile "https://kent.dl.sourceforge.net/project/mpv-player-windows/libmpv/mpv-dev-%mpv_platform%-20181007-git-2b0b9bb.7z" -FileName mpv-dev.7z
+appveyor DownloadFile "https://downloads.sourceforge.net/project/mpv-player-windows/libmpv/mpv-dev-x86_64-20200607-git-12415db.7z?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmpv-player-windows%2Ffiles%2Flibmpv%2Fmpv-dev-x86_64-20200607-git-12415db.7z%2Fdownload&ts=1591817998" -FileName mpv-dev.7z
 7z x -y mpv-dev.7z
 
 :def
