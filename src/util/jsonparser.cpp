@@ -810,9 +810,22 @@ QMap<QString, QString> JsonParser::parseBttvEmotesData(const QByteArray &data)
     QJsonDocument doc = QJsonDocument::fromJson(data, &error);
 
     if (error.error == QJsonParseError::NoError) {
-        QJsonObject json = doc.object();
 
-        QJsonArray emotes = json["emotes"].toArray();
+        QJsonArray emotes;
+
+        if (doc.isArray()) {
+            // handle global emotes
+            emotes = doc.array();
+        } else {
+            // handle channel and shared emotes
+            QJsonObject obj = doc.object();
+            emotes = doc["sharedEmotes"].toArray();
+
+            // merge channelEmotes into sharedEmotes
+            for (const auto & emote : doc["channelEmotes"].toArray()) {
+                emotes.push_back(emote);
+            }
+        }
 
         for (const auto & emote : emotes) {
             const auto & emoteObj = emote.toObject();

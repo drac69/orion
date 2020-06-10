@@ -19,7 +19,7 @@
 #define TWITCH_API "https://api.twitch.tv/api"
 #define TWITCH_TMI_USER_API "https://tmi.twitch.tv/group/user/"
 //#define TWITCH_EMOTES "http://static-cdn.jtvnw.net/emoticons/v1/"
-#define BTTV_API "https://api.betterttv.net/2"
+#define BTTV_API "https://api.betterttv.net/3/cached"
 #define TWITCH_API_V5 "https://api.twitch.tv/v5"
 #define CLIENT_ID "0dpzlnp1w2bjlim3ldp0u96o4dq2gm"
 #define CLIENT_ID_PRIVATE "kimne78kx3ncx6brgo4mv6wki5h1ko"

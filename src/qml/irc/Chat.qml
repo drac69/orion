@@ -73,7 +73,7 @@ Item {
         Emotes.loadChannelBadgeUrls(channelId);
         Emotes.loadChannelBetaBadgeUrls(channelId);
         Emotes.loadChannelBitsUrls(channelId);
-        Emotes.loadChannelBttvEmotes(channelName);
+        Emotes.loadChannelBttvEmotes(channelId.toString());
     }
 
     function joinChannel(channelName, channelId) {
