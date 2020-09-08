@@ -6,9 +6,9 @@ sudo apt-fast -y install nasm xorg-dev libwayland-dev libgl1-mesa-dev libegl1-me
 sudo apt-fast -y install libassimp-dev libglm-dev graphviz libxcb-dri3-0 libxcb-present0 libpciaccess0 cmake libpng-dev libxcb-dri3-dev libx11-dev libx11-xcb-dev libmirclient-dev libwayland-dev libxrandr-dev
 
 cd $HOME
-wget -O vulkansdk-linux-x86_64-1.0.51.0.run https://vulkan.lunarg.com/sdk/download/1.0.51.0/linux/vulkansdk-linux-x86_64-1.0.51.0.run
-chmod ugo+x vulkansdk-linux-x86_64-1.0.51.0.run
-./vulkansdk-linux-x86_64-1.0.51.0.run
+wget -O vulkansdk-linux-x86_64-1.2.148.1.run https://vulkan.lunarg.com/sdk/download/1.2.148.1/linux/vulkansdk-linux-x86_64-1.2.148.1.run
+chmod ugo+x vulkansdk-linux-x86_64-1.2.148.1.run
+./vulkansdk-linux-x86_64-1.2.148.1.run
 
 export MPV_DIR=$HOME/mpv
 export MPV_BUILD=$MPV_DIR/mpv-build

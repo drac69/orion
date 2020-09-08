@@ -6,7 +6,7 @@ if exist %OPENSSL_DIR% goto :eof
 
 if not exist "C:\projects\OpenSSL" mkdir "C:\projects\OpenSSL"
 cd "C:\projects\OpenSSL"
-if not exist ssl.zip ( appveyor DownloadFile "https://codeload.github.com/openssl/openssl/zip/OpenSSL_1_0_2p" -FileName ssl.zip || goto :eof )
+if not exist ssl.zip ( appveyor DownloadFile "https://codeload.github.com/openssl/openssl/zip/OpenSSL_1_0_2u" -FileName ssl.zip || goto :eof )
 if not exist build ( 7z x ssl.zip > NUL && move openssl* build || goto :eof )
 
 cd build
@@ -14,7 +14,7 @@ cd build
 if %platform%==x64 ( 
     cmd /c "perl Configure VC-WIN64A && ms\do_win64a"
 ) else ( 
-    curl -L -o nasminst.exe http://libgd.blob.core.windows.net/nasm/nasm-2.07-installer.exe
+    curl -L -o nasminst.exe https://libgd.blob.core.windows.net/nasm/nasm-2.07-installer.exe
     start /wait nasminst.exe /S
     cmd /c "perl Configure VC-WIN32 && ms\do_nasm"
 )
