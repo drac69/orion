@@ -155,11 +155,14 @@ ApplicationWindow {
         console.log("Orientation", Screen.orientation)
 
         //Initial view
-        if (!Settings.hasAccessToken) {
-            topbar.setCurrentIndex(5)
-        } else {
-            topbar.setCurrentIndex(1)
-        }
+        //if (!Settings.hasAccessToken) {
+        //    topbar.setCurrentIndex(5)
+        //} else {
+			//topbar.setCurrentIndex(1)
+        //}
+		
+		// always go to followed streams
+		topbar.setCurrentIndex(1)
 
         //Check version
         if (Settings.versionCheckEnabled) {
