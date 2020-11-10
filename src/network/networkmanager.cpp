@@ -152,6 +152,7 @@ bool NetworkManager::networkAccess() {
 void NetworkManager::testConnection()
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(KRAKEN_API));
@@ -175,17 +176,6 @@ void NetworkManager::testConnectionReply()
 
 void NetworkManager::checkVersion()
 {
-    QNetworkRequest req;
-    req.setRawHeader("User-Agent", "Orion");
-    req.setRawHeader("Accept", "application/vnd.github.v3+json");
-    req.setUrl(QUrl("https://api.github.com/repos/alamminsalo/orion/releases/latest"));
-
-    QNetworkReply *reply = operation->get(req);
-    connect(reply, &QNetworkReply::finished, this, [reply, this](){
-        QPair<QString, QString> info = JsonParser::parseVersion(reply->readAll());
-        emit versionCheckEnded(info.first, info.second);
-        reply->deleteLater();
-    });
 }
 
 /**
@@ -196,6 +186,7 @@ void NetworkManager::getStream(const quint64 channelId)
 {
     QString url = KRAKEN_API + QString("/streams/%1").arg(channelId);
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -209,6 +200,7 @@ void NetworkManager::getStreams(const QString &url)
 {
     //qDebug() << "GET: " << url;
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -221,6 +213,7 @@ void NetworkManager::getStreams(const QString &url)
 void NetworkManager::getGames(const quint32 &offset, const quint32 &limit)
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     QString url = KRAKEN_API;
@@ -236,6 +229,7 @@ void NetworkManager::getGames(const quint32 &offset, const quint32 &limit)
 void NetworkManager::searchChannels(const QString &query, const quint32 &offset, const quint32 &limit)
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     QString url = QString(KRAKEN_API)
@@ -254,6 +248,7 @@ void NetworkManager::searchChannels(const QString &query, const quint32 &offset,
 void NetworkManager::searchGames(const QString &query)
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     QString url = QString(KRAKEN_API)
@@ -269,6 +264,7 @@ void NetworkManager::searchGames(const QString &query)
 void NetworkManager::getFeaturedStreams()
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     QString url = QString(KRAKEN_API)
@@ -285,6 +281,7 @@ void NetworkManager::getFeaturedStreams()
 void NetworkManager::getStreamsForGame(const QString &game, const quint32 &offset, const quint32 &limit)
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     QString url = QString(KRAKEN_API)
@@ -304,6 +301,7 @@ void NetworkManager::getChannelPlaybackStream(const QString &channelName)
             + QString("/channels/%1").arg(channelName)
             + QString("/access_token");
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Client-ID", getPrivateClientId().toUtf8());
     request.setUrl(QUrl(url));
 
@@ -328,6 +326,7 @@ void NetworkManager::getBroadcasts(const quint64 channelId, quint32 offset, quin
         //url += "&hls=true";
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -343,6 +342,7 @@ void NetworkManager::getBroadcastPlaybackStream(const QString &vod)
             + QString("/vods/%1").arg(vod)
             + QString("/access_token");
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Client-ID", getPrivateClientId().toUtf8());
     request.setUrl(QUrl(url));
 
@@ -359,6 +359,7 @@ void NetworkManager::getUser()
     QString auth = "OAuth " + access_token;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -378,6 +379,7 @@ void NetworkManager::getUserFavourites(const quint64 userId, quint32 offset, qui
             + QString("?offset=%1").arg(offset)
             + QString("&limit=%1").arg(limit);
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -401,6 +403,7 @@ void NetworkManager::getEmoteSets(const QList<int> &emoteSetIDs) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -418,6 +421,7 @@ void NetworkManager::loadChatterList(const QString channel) {
     qDebug() << "Request" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setUrl(url);
 
     QNetworkReply *reply = operation->get(request);
@@ -431,6 +435,7 @@ void NetworkManager::getBlockedUserList(const quint64 userId, const quint32 offs
     qDebug() << "Request" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(url);
@@ -450,6 +455,7 @@ void NetworkManager::editUserBlock(const quint64 myUserId, const QString & block
     const QString url = QString(KRAKEN_API) + QString("/users?login=") + QUrl::toPercentEncoding(blockUsername);
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(url);
@@ -494,6 +500,7 @@ void NetworkManager::editUserBlockWithId(const quint64 myUserId, const QString &
     qDebug() << "Request" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(url);
@@ -585,6 +592,7 @@ void NetworkManager::getVodChatPiece(quint64 vodId, quint64 offset) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(url);
@@ -602,6 +610,7 @@ void NetworkManager::getNextVodChatPiece(quint64 vodId, QString cursor) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(url);
@@ -693,6 +702,7 @@ void NetworkManager::getChannelBadgeUrls(const quint64 channelId) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -713,6 +723,7 @@ void NetworkManager::getChannelBadgeUrlsBeta(const int channelID) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -728,6 +739,7 @@ void NetworkManager::getGlobalBadgesUrlsBeta() {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", "application/vnd.twitchtv.v5+json");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -743,6 +755,7 @@ void NetworkManager::getChannelBitsUrls(const int channelID) {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setRawHeader("Accept", QString("application/vnd.twitchtv.v5+json").toUtf8());
     request.setUrl(QUrl(url));
@@ -789,6 +802,7 @@ void NetworkManager::getGlobalBitsUrls() {
     qDebug() << "Requesting" << url;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", QString("application/vnd.twitchtv.v5+json").toUtf8());
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -819,7 +833,7 @@ void NetworkManager::globalBitsUrlsReply() {
 }
 
 void NetworkManager::getChannelBttvEmotes(const QString channel) {
-    QString url = QString(BTTV_API) + QString("/channels/") + QUrl::toPercentEncoding(channel);
+    QString url = QString(BTTV_API) + QString("/users/twitch/") + QUrl::toPercentEncoding(channel);
 
     qDebug() << "Requesting" << url;
 
@@ -886,6 +900,7 @@ void NetworkManager::editUserFavourite(const quint64 userId, const quint64 chann
     QString auth = "OAuth " + access_token;
 
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Accept", QString("application/vnd.twitchtv.v5+json").toUtf8());
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
@@ -909,6 +924,7 @@ QNetworkAccessManager *NetworkManager::getManager() const
 void NetworkManager::getM3U8Data(const QString &url, M3U8TYPE type)
 {
     QNetworkRequest request;
+	//request.setRawHeader("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1;  http://www.google.com/bot.html");
     request.setRawHeader("Client-ID", getClientId().toUtf8());
     request.setUrl(QUrl(url));
 
